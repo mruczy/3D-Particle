@@ -1,6 +1,5 @@
 #include "Choinka.h"
 
-//-----------------------------------------------
 Choinka::Choinka(v3 posvec)
 {
 	this->setPosition(posvec);

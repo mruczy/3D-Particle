@@ -16,7 +16,7 @@ void ofApp::setup() {
 
 	plane.set(1000, 1000);
 	plane.rotateDeg(270, 1, 0, 0);
-	plane.move(0, -100, 0);
+	plane.move(0, 0, 0);
 	planeMaterial.setDiffuseColor(ofFloatColor::darkGreen);
 
 	this->collection.push_back(new Collection());
