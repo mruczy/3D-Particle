@@ -40,7 +40,6 @@ void Generator::generate(vector<Particle*>* particle)
 {
 	for (int i = 0; i < amount;i++)
 	{
-		printf("generuj\n");
 		particle->push_back(new Particle(v3(this->getPosition().x + random(-500, 500), this->getPosition().y, this->getPosition().z + random(-500, 500)), v3(random(10.0, 10.5), 3, random(10.0, 10.5)), 10.0, 1.0, 200));
 	}
 }
