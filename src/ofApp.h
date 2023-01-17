@@ -16,8 +16,6 @@ public:
 
 	std::vector<Collection*> collection;
 
-	//test
-	//std::vector<Emitter*> emitter;
 
 	void setup();
 	void update();

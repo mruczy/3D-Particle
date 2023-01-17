@@ -13,8 +13,6 @@
 
 //--------------------------------------------------------------
 void ofApp::setup() {
-	//light.setup();
-	//light.setPosition(-100, 200, 0);
 
 	plane.set(1000, 1000);
 	plane.rotateDeg(270, 1, 0, 0);
@@ -23,15 +21,12 @@ void ofApp::setup() {
 
 	this->collection.push_back(new Collection());
 
-	//this->points.push_back(new Particle(v3(512.0, 512.0, 0.0), v3(0.0, 0.0, 0.0), v3(0.0, 0.0, 0.0), 10.0, 100000.0, 225, 225, 225));
-
 	ofEnableLighting();
 	ofEnableDepthTest();
 	light.setup();
 	light.enable();
 	light.setPosition(-200, 200, 200);
 
-	//this->emitter.push_back(new Emitter(v3(10, 10, 0)));
 	ofSetSphereResolution(1);
 }
 

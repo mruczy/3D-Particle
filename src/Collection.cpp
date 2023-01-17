@@ -1,12 +1,32 @@
 #include "Collection.h"
-#include <random>
 
 Collection::Collection()
 {
-	this->addEmitter(v3(50, 500, 0));
+	//Emitter snow
+	this->addEmitter(v3(50, 500, 0), "snow");
+
+	//Emitter smoke
+	//this->addEmitter(v3(50, 500, 0), "smoke");
+
 	this->addPoint(v3(500, 20, 50));
 	this->addWind(v3(500, 20, 50));
 
+	for (auto* emit : this->emitter)
+	{
+		if (emit->getName() == "snow")
+		{
+			emit->addGenerator(emit->getPosition(), 10);
+		}
+
+		/*if (emit->getName() == "smoke")
+		{
+			emit->addGenerator(emit->getPosition(), 10);
+			emit->addGenerator(emit->getPosition(), 5);
+		}*/
+	}
+
+
+	//zrobic funkcje do dodawanai obiektow
 	for (int x = -500; x <= 500; x += 100) {
 		for (int z = -500; z <= 0; z += 100) {
 			this->object.push_back(new Choinka(v3(x, -60, z)));
@@ -25,9 +45,9 @@ Collection::~Collection()
 {
 }
 
-void Collection::addEmitter(v3 posvec)
+void Collection::addEmitter(v3 posvec, string name)
 {
-	this->emitter.push_back(new Emitter(posvec));
+	this->emitter.push_back(new Emitter(posvec, name));
 }
 
 void Collection::addPoint(v3 posvec)
@@ -44,13 +64,9 @@ void Collection::collectionUpdate()
 {
 	for (auto* emit : this->emitter)
 	{
+		for (auto* gen : emit->getGenerator())
 		{
-			for (int i = 0; i < 10; i++)
-			{
-				if (this->particle.size() < 1000) {
-					emit->generate(&particle);
-				}
-			}
+			gen->generate(&particle);
 		}
 	}
 

@@ -2,7 +2,6 @@
 #define EMITTER_H
 
 #include "v3.h"
-#include "ofMain.h"
 #include "Particle.h"
 #include "Generator.h"
 
@@ -10,31 +9,29 @@
 
 class Emitter
 {
-public:
-
+private:
+	string name = "";
 	v3 pos;
-	int spawnTimer;
-	int counter;
 	ofMaterial material;
 	ofSpherePrimitive sphere;
+	std::vector<Generator*> generator;
 
-	Emitter(v3 posvec);
+public:
+	Emitter(v3 posvec, string name);
 	virtual ~Emitter();
+
+	string getName();
+	void setName(string newName);
 
 	v3 getPosition();
 	void setPosition(v3 posvec);
 
-	//int getSpawnTimer();
-	//void setSpawnTimer(int spawntimer);
+	void addGenerator(v3 posvec, int amount);
+	//void deleteGenerator();
 
-	//int getCounter();
-	//void setCounter(int ct);
-	//void Counter();
+	std::vector<Generator*> getGenerator();
 
 	void draw();
-	float rd(float min, float max);
-
-	void generate(vector<Particle*> *particle);
 };
 
 #endif

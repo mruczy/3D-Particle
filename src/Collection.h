@@ -25,7 +25,7 @@ public:
 	Collection();
 	virtual ~Collection();
 
-	void addEmitter(v3 posvec);
+	void addEmitter(v3 posvec, string name);
 	//void deleteEmitter();
 
 	void addPoint(v3 posvec);
