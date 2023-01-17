@@ -28,11 +28,14 @@ public:
 	void addEmitter(v3 posvec, string name);
 	//void deleteEmitter();
 
-	void addPoint(v3 posvec);
+	void addPoint(v3 posvec, float force);
 	//void deletePoint();
 
-	void addWind(v3 posvec);
+	void addWind(v3 posvec, v3 fvec, float force);
 	//void deleteWind();
+
+	void addObject(v3 posvec, int value);
+	//void deleteObject();
 
 	void collectionUpdate();
 	void particleUpdate();

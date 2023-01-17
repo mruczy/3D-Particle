@@ -1,4 +1,5 @@
 #include "Collection.h"
+#include <math.h>
 
 Collection::Collection()
 {
@@ -8,8 +9,8 @@ Collection::Collection()
 	//Emitter smoke
 	//this->addEmitter(v3(50, 500, 0), "smoke");
 
-	this->addPoint(v3(500, 20, 50));
-	this->addWind(v3(500, 20, 50));
+	this->addPoint(v3(500, 50, 50), 5);
+	this->addWind(v3(0, 0, 200), v3(300, 35, -10), 600);
 
 	for (auto* emit : this->emitter)
 	{
@@ -18,26 +19,29 @@ Collection::Collection()
 			emit->addGenerator(emit->getPosition(), 10);
 		}
 
-		/*if (emit->getName() == "smoke")
+		if (emit->getName() == "smoke")
 		{
-			emit->addGenerator(emit->getPosition(), 10);
-			emit->addGenerator(emit->getPosition(), 5);
-		}*/
-	}
-
-
-	//zrobic funkcje do dodawanai obiektow
-	for (int x = -500; x <= 500; x += 100) {
-		for (int z = -500; z <= 0; z += 100) {
-			this->object.push_back(new Choinka(v3(x, -60, z)));
+			printf("addGenerator to smoke");
+			//emit->addGenerator(emit->getPosition(), 10);
+			//emit->addGenerator(emit->getPosition(), 5);
 		}
 	}
 
-	for (int x = -300; x <= 300; x += 60) {
-		for (int z = 0; z <= 300; z += 60) {
-			this->object.push_back(new Prezent(v3(x + 20, -80, z - 10)));
+	for (auto d = 0; d <= 180; d += 30)
+	{
+		float x = 300 * cos(d * (PI / 180));
+		float z = 300 * sin(d * (PI / 180));
+		this->addObject(v3(x, 60, z), 1);
+
+		for (auto d = 0; d <= 360; d += 72)
+		{
+			float x2 = 40 * cos(d * (PI / 180)) + x;
+			float z2 = 40 * sin(d * (PI / 180)) + z;
+			this->addObject(v3(x2, 10, z2), 2);
 		}
 	}
+
+	this->addObject(v3(0, 20, 0), 3);
 }
 
 
@@ -50,20 +54,48 @@ void Collection::addEmitter(v3 posvec, string name)
 	this->emitter.push_back(new Emitter(posvec, name));
 }
 
-void Collection::addPoint(v3 posvec)
+void Collection::addPoint(v3 posvec, float force)
 {
-	this->forcepoint.push_back(new ForcePoint(v3(500, 0, 0), 5));
+	this->forcepoint.push_back(new ForcePoint(posvec, force));
 }
 
-void Collection::addWind(v3 posvec)
+void Collection::addWind(v3 posvec, v3 fvec, float force)
 {
-	this->wind.push_back(new ForceWind(v3(0, 0, 200), v3(300, 15, -10), 600));
+	this->wind.push_back(new ForceWind(posvec, fvec, force));
+}
+
+void Collection::addObject(v3 posvec, int value)
+{
+	switch (value)
+	{
+	case 1:
+		this->object.push_back(new Choinka(posvec));
+		break;
+	case 2:
+		this->object.push_back(new Prezent(posvec));
+		break;
+	case 3:
+		this->object.push_back(new Ognisko(posvec));
+		break;
+	default:
+		break;
+	}
 }
 
 void Collection::collectionUpdate()
 {
 	for (auto* emit : this->emitter)
 	{
+		if (emit->getName() == "snow")
+		{
+
+		}
+
+		if (emit->getName() == "smoke")
+		{
+
+		}
+
 		for (auto* gen : emit->getGenerator())
 		{
 			gen->generate(&particle);
