@@ -7,23 +7,21 @@ Collection::Collection()
 	this->addEmitter(v3(50, 500, 0), "snow");
 
 	//Emitter smoke
-	//this->addEmitter(v3(50, 500, 0), "smoke");
+	this->addEmitter(v3(0, 0, 0), "smoke");
 
-	this->addPoint(v3(500, 50, 50), 5);
-	this->addWind(v3(0, 0, 200), v3(300, 35, -10), 600);
+	this->addPoint(v3(500, 50, 50), 0.5);
+	this->addWind(v3(0, 0, 200), v3(1, 0.1, -1), 1);
 
 	for (auto* emit : this->emitter)
 	{
 		if (emit->getName() == "snow")
 		{
-			emit->addGenerator(emit->getPosition(), 10);
+			emit->addGenerator(emit->getPosition(), v3(0, -10, 0), 9.81, 20, 2, 1, 200, 1, ofColor::white);
 		}
 
 		if (emit->getName() == "smoke")
 		{
-			printf("addGenerator to smoke");
-			//emit->addGenerator(emit->getPosition(), 10);
-			//emit->addGenerator(emit->getPosition(), 5);
+			emit->addGenerator(emit->getPosition(), v3(0, 5, 0), 0.0, 2, 1, 1, 100, 1, ofColor::orange);
 		}
 	}
 
@@ -88,17 +86,18 @@ void Collection::collectionUpdate()
 	{
 		if (emit->getName() == "snow")
 		{
-
+			for (auto* gen : emit->getGenerator())
+			{
+				gen->generate(&particle, 500);
+			}
 		}
 
 		if (emit->getName() == "smoke")
 		{
-
-		}
-
-		for (auto* gen : emit->getGenerator())
-		{
-			gen->generate(&particle);
+			for (auto* gen : emit->getGenerator())
+			{
+				gen->generate(&particle, 20);
+			}
 		}
 	}
 
@@ -109,6 +108,7 @@ void Collection::collectionUpdate()
 	{
 		for (auto* part : this->particle)
 		{
+
 			((part->getPosition().x - point->getPosition().x > 0.0) ? fx = 1 : fx = -1);
 			((part->getPosition().y - point->getPosition().y > 0.0) ? fy = 1 : fy = -1);
 			((part->getPosition().z - point->getPosition().z > 0.0) ? fz = 1 : fz = -1);
