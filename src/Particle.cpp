@@ -1,13 +1,13 @@
 #include "Particle.h"
 
-//position , velocity, acceleration, radius, mass, colorR, colorG, colorB 
-Particle::Particle(v3 posvec, v3 velvec, float radius, float mass, int life)
+Particle::Particle(v3 posvec, v3 velvec, float radius, float mass, float g, int life, int resolution, ofColor_<unsigned char> _color)
 {
 	this->setPosition(posvec);
 	this->setVelocity(velvec);
 	this->setAcceleration(v3(0.0, 0.0, 0.0));
 	this->setRadius(radius);
 	this->setMass(mass);
+	this->setG(g);
 	this->setMaxLife(life);
 	this->setLife();
 
@@ -15,7 +15,8 @@ Particle::Particle(v3 posvec, v3 velvec, float radius, float mass, int life)
 	f.y = 0.0;
 	f.z = 0.0;
 
-	sphere.setResolution(2);
+	sphere.setResolution(resolution);
+	this->material.setDiffuseColor(_color);
 }
 
 Particle::~Particle()
@@ -49,6 +50,16 @@ void Particle::randomMass(float minMass, float maxMass)
 void Particle::setMass(float mass)
 {
 	m = mass;
+}
+
+float Particle::getG()
+{
+	return g;
+}
+
+void Particle::setG(float _g)
+{
+	this->g = _g;
 }
 
 int Particle::getLife()
@@ -133,7 +144,7 @@ void Particle::addForce(v3 fvec)
 
 void Particle::updateParticle(float dt)
 {
-	f.y += 9.81 * m;
+	f.y += this->getG() * m;
 
 	//apply acceleration
 	acc.x = -f.x / m;
@@ -170,12 +181,6 @@ void Particle::updateParticle(float dt)
 
 void Particle::draw()
 {
-	/*if (m > 0)
-	{
-		ofSetColor(this->getColorR(), this->getColorG(), this->getColorB());
-		ofDrawCircle(this->getPosition().x, this->getPosition().y, this->getPosition().z, this->getRadius());
-	}*/
-
 	material.begin();
 	sphere.draw();
 	material.end();
