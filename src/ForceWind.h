@@ -6,16 +6,15 @@
 
 class ForceWind
 {
-public:
-
-	v3 pos;
-	v3 force;
+private:
+	v3 pos;						
+	v3 force;							
 	ofMaterial material;
 	ofConePrimitive cone;
 	ofIcoSpherePrimitive sphere;
 	float radius;
 
-	//opis
+public:
 	ForceWind(v3 posvec, v3 fvec, float r);
 	virtual ~ForceWind();
 

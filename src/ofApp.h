@@ -4,10 +4,9 @@
 #include "Collection.h"
 #include "Particle.h"
 
-class ofApp : public ofBaseApp {
-
-public:
-
+class ofApp : public ofBaseApp 
+{
+private:
 	ofEasyCam cam;
 	ofMesh pathLines;
 	ofLight light;
@@ -16,7 +15,7 @@ public:
 
 	std::vector<Collection*> collection;
 
-
+public:
 	void setup();
 	void update();
 	void draw();
@@ -32,7 +31,4 @@ public:
 	void windowResized(int w, int h);
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
-
-	//void updateForcePoints(float dt);
-	//void updateForceParticles(float dt);
 };

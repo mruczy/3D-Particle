@@ -14,14 +14,14 @@
 
 class Collection
 {
-public:
-
+private:
 	std::vector<Emitter*> emitter;
 	std::vector<Particle*> particle;
 	std::vector<ForcePoint*> forcepoint;
 	std::vector<ForceWind*> wind;
 	std::vector<Object*> object;
 
+public:
 	Collection();
 	virtual ~Collection();
 

@@ -7,7 +7,7 @@
 
 class Prezent : public Object
 {
-public:
+private:
 	ofMaterial material1;
 	ofMaterial material2;
 	ofMaterial material3;
@@ -16,6 +16,7 @@ public:
 	ofBoxPrimitive box2;
 	ofBoxPrimitive box3;
 
+public:
 	Prezent(v3 posvec);
 	virtual ~Prezent();
 

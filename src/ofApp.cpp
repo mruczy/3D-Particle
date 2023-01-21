@@ -3,14 +3,6 @@
 #include <random>
 #include "Collection.h"
 
-//float rd(float min, float max)
-//{
-//	std::random_device rd;
-//	std::mt19937 gen(rd());
-//	std::uniform_int_distribution<> distr(min, max);
-//	return distr(gen);
-//}
-
 //--------------------------------------------------------------
 void ofApp::setup() {
 
@@ -131,39 +123,4 @@ void ofApp::gotMessage(ofMessage msg) {
 void ofApp::dragEvent(ofDragInfo dragInfo) {
 
 }
-
-
-//void ofApp::updateForcePoints(float dt)
-//{
-//	for (auto* particle : this->particles)
-//	{
-//		for (auto* point : this->points)
-//		{
-//			float dist = sqrt(pow(particle->getPosition().x - point->getPosition().x, 2) * pow(particle->getPosition().y - point->getPosition().y, 2));
-//			float fx = particle->getForce().x + pointMassMultiplier * 0.1 * point->getMass() * (particle->getPosition().x - point->getPosition().x) / pow(dist, 3.0);
-//			float fy = particle->getForce().y + pointMassMultiplier * 0.1 * point->getMass() * (particle->getPosition().y - point->getPosition().y) / pow(dist, 3.0);
-//			float fz = particle->getForce().z + pointMassMultiplier * 0.1 * point->getMass() * (particle->getPosition().z - point->getPosition().z) / pow(dist, 3.0);
-//			particle->setForce(v3(fx, fy, fz));
-//		}
-//	}
-//}
-//
-//void ofApp::updateForceParticles(float dt)
-//{
-//	float dist;
-//	for (auto* particlei : this->particles)
-//	{
-//		for (auto* particlej : this->particles)
-//		{
-//			if (particlei != particlej)
-//			{
-//				float dist = sqrt(pow(particlei->getPosition().x - particlej->getPosition().x, 2) * pow(particlei->getPosition().y - particlej->getPosition().y, 2));
-//				float fx = particlei->getForce().x + particleMassMultiplier * 0.1 * particlej->getMass() * (particlei->getPosition().x - particlej->getPosition().x) / pow(dist, 3.0);
-//				float fy = particlei->getForce().y + particleMassMultiplier * 0.1 * particlej->getMass() * (particlei->getPosition().y - particlej->getPosition().y) / pow(dist, 3.0);
-//				float fz = particlei->getForce().z + particleMassMultiplier * 0.1 * particlej->getMass() * (particlei->getPosition().z - particlej->getPosition().z) / pow(dist, 3.0);
-//				particlei->setForce(v3(fx, fy, fz));
-//			}
-//		}
-//	}
-//}
 

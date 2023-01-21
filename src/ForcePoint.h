@@ -6,13 +6,13 @@
 
 class ForcePoint
 {
-public:
-
+private:
 	v3 pos;
 	float force;
 	ofMaterial material;
 	ofSpherePrimitive sphere;
 
+public:
 	ForcePoint(v3 posvec, float f);
 	virtual ~ForcePoint();
 

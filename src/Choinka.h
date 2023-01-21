@@ -8,12 +8,13 @@
 
 class Choinka: public Object 
 {
-public:
+private:
 	ofMaterial material;
 	ofConePrimitive cone1;
 	ofConePrimitive cone2;
 	ofConePrimitive cone3;
 
+public:
 	Choinka(v3 posvec);
 	virtual ~Choinka();
 

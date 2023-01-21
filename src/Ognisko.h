@@ -8,12 +8,13 @@
 
 class Ognisko : public Object
 {
-public:
+private:
 	ofMaterial materiala;
 	ofMaterial materialb;
 	ofConePrimitive cone;
 	std::vector<ofIcoSpherePrimitive*> sphere;
 
+public:
 	Ognisko(v3 posvec);
 	virtual ~Ognisko();
 

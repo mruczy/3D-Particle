@@ -9,6 +9,7 @@ class Particle
 private:
 	float r;		//radius
 	float m;		//mass
+	float g;		//g force
 	int timeLife;
 	int maxLife;
 	v3 pos;			//position vector
@@ -19,7 +20,7 @@ private:
 	ofIcoSpherePrimitive sphere;
 
 public:
-	Particle(v3 posvec, v3 velvec, float radius, float mass, int life);
+	Particle(v3 posvec, v3 velvec, float radius, float mass, float g, int life, int resolution, ofColor_<unsigned char> color);
 	virtual ~Particle();
 
 	float getRadius();
@@ -28,6 +29,9 @@ public:
 	float getMass();
 	void randomMass(float minMass, float maxMass);
 	void setMass(float mass);
+
+	float getG();
+	void setG(float _g);
 
 	int getLife();
 	void setLife();

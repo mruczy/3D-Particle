@@ -9,10 +9,10 @@ class Object
 protected:
 	v3 pos;
 
+public:
 	Object();
 	virtual ~Object();
 
-public:
 	v3 getPosition();
 	void setPosition(v3 posvec);
 
