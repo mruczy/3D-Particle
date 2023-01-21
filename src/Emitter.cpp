@@ -38,11 +38,9 @@ void Emitter::setPosition(v3 posvec)
 	this->pos = posvec;
 }
 
-void Emitter::addGenerator(v3 posvec, int amount)
+void Emitter::addGenerator(v3 posvec, v3 velvec, float g, int amount, float radius, float mass, int life, int resolution, const ofColor_<unsigned char> color)
 {
-	this->generator.push_back(new Generator(posvec, amount));
-	std::cout << "addGen    size = " << this->generator.size() << std::endl;
-	std::cout << "size = " << this->getGenerator().size() << std::endl;
+	this->generator.push_back(new Generator(posvec, velvec, g, amount, radius, mass, life, resolution, color));
 }
 
 std::vector<Generator*> Emitter::getGenerator()

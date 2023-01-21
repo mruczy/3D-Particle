@@ -26,7 +26,7 @@ public:
 	v3 getPosition();
 	void setPosition(v3 posvec);
 
-	void addGenerator(v3 posvec, int amount);
+	void addGenerator(v3 posvec, v3 fvec, float g, int amount, float radius, float mass, int life, int resolution, const ofColor_<unsigned char> color);
 	//void deleteGenerator();
 
 	std::vector<Generator*> getGenerator();
