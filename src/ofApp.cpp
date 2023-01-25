@@ -6,11 +6,6 @@
 //--------------------------------------------------------------
 void ofApp::setup() {
 
-	plane.set(1000, 1000);
-	plane.rotateDeg(270, 1, 0, 0);
-	plane.move(0, 0, 0);
-	planeMaterial.setDiffuseColor(ofFloatColor::darkGreen);
-
 	this->collection.push_back(new Collection());
 
 	ofEnableLighting();
@@ -28,6 +23,7 @@ void ofApp::update() {
 	for (auto* colle : this->collection)
 	{
 		colle->collectionUpdate();
+		colle->collisionUpdate();
 		colle->particleUpdate();
 	}
 }
@@ -37,9 +33,6 @@ void ofApp::draw() {
 
 	cam.begin();
 	ofEnableLighting();
-	planeMaterial.begin();
-	plane.draw();
-	planeMaterial.end();
 
 	ofDrawGrid(50, 1, true, true, true, true);
 
