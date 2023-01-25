@@ -191,6 +191,7 @@
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\Ognisko.cpp" />
     <ClCompile Include="src\Particle.cpp" />
+    <ClCompile Include="src\Plane.cpp" />
     <ClCompile Include="src\Prezent.cpp" />
     <ClCompile Include="src\v3.cpp" />
   </ItemGroup>
@@ -205,6 +206,7 @@
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\Ognisko.h" />
     <ClInclude Include="src\Particle.h" />
+    <ClInclude Include="src\Plane.h" />
     <ClInclude Include="src\Prezent.h" />
     <ClInclude Include="src\v3.h" />
   </ItemGroup>
