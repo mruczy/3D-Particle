@@ -40,6 +40,7 @@ Collection::Collection()
 	}
 
 	this->addObject(v3(0, 20, 0), 3);
+	this->addObject(v3(0, 0, 0), 4);
 }
 
 
@@ -74,6 +75,9 @@ void Collection::addObject(v3 posvec, int value)
 		break;
 	case 3:
 		this->object.push_back(new Ognisko(posvec));
+		break;
+	case 4:
+		this->object.push_back(new Plane(posvec));
 		break;
 	default:
 		break;
@@ -125,6 +129,23 @@ void Collection::collectionUpdate()
 			if (dist < w->getRadius())
 			{
 				part->addForce(v3(w->getForce().x, w->getForce().y, w->getForce().z));
+			}
+		}
+	}
+}
+
+void Collection::collisionUpdate()
+{
+	for (auto* part : this->particle)
+	{
+		for (auto* obj : this->object)
+		{
+			if (obj->getIsCollision() == true)
+			{
+				if (part->getPosition().y < obj->getPosition().y)
+				{
+					part->setVelocity(v3(part->getVelocity().x, -part->getVelocity().y/5, part->getVelocity().z));
+				}
 			}
 		}
 	}

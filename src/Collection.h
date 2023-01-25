@@ -9,6 +9,7 @@
 #include "Prezent.h"
 #include "Choinka.h"
 #include "Ognisko.h"
+#include "Plane.h"
 
 
 
@@ -38,6 +39,7 @@ public:
 	//void deleteObject();
 
 	void collectionUpdate();
+	void collisionUpdate();			//only with plane
 	void particleUpdate();
 
 	void draw();
