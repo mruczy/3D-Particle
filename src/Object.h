@@ -8,6 +8,7 @@ class Object
 {
 protected:
 	v3 pos;
+	bool collision = false;
 
 public:
 	Object();
@@ -15,6 +16,9 @@ public:
 
 	v3 getPosition();
 	void setPosition(v3 posvec);
+
+	bool getIsCollision();
+	void setIsCollision(bool _collision);
 
 	virtual void draw();
 };
